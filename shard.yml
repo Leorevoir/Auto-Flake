@@ -1,0 +1,13 @@
+name: auto-flake
+version: 0.1.0
+
+authors:
+  - Leorevoir <leo.quinzler@epitech.eu>
+
+targets:
+  auto-flake:
+    main: src/auto-flake.cr
+
+crystal: '>= 1.14.0'
+
+license: MIT
