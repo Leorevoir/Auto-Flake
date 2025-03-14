@@ -15,17 +15,17 @@
       in
       with pkgs; {
         devShells.default = mkShell {
-         buildInputs = [
-           crystal
-         ];
-         shellHook = ''
-           export PKG_CONFIG_PATH=${pkgs.lib.makeLibraryPath [
-           
-           ]}:$PKG_CONFIG_PATH
-           export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
-           
-           ]}:$LD_LIBRARY_PATH
-         '';
-       };
-   });
+          buildInputs = [
+            crystal
+          ];
+          shellHook = ''
+            export PKG_CONFIG_PATH=${pkgs.lib.makeLibraryPath [
+            
+            ]}:$PKG_CONFIG_PATH
+            export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
+            
+            ]}:$LD_LIBRARY_PATH
+          '';
+        };
+      });
 }

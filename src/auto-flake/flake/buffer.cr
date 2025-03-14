@@ -16,16 +16,16 @@ module Auto::Flake::Buffer
              "      in",
              "      with pkgs; {",
              "        devShells.default = mkShell {",
-             "         buildInputs = [",
-             "         ];",
-             "         shellHook = ''",
-             "           export PKG_CONFIG_PATH=${pkgs.lib.makeLibraryPath [",
-             "           ]}:$PKG_CONFIG_PATH",
-             "           export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [",
-             "           ]}:$LD_LIBRARY_PATH",
-             "         '';",
-             "       };",
-             "   });",
+             "          buildInputs = [",
+             "          ];",
+             "          shellHook = ''",
+             "            export PKG_CONFIG_PATH=${pkgs.lib.makeLibraryPath [",
+             "            ]}:$PKG_CONFIG_PATH",
+             "            export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [",
+             "            ]}:$LD_LIBRARY_PATH",
+             "          '';",
+             "        };",
+             "      });",
             "}"]
 
   def self.create_buffer(_pkgs : String, _libs : String) : Array(String)
@@ -37,13 +37,13 @@ module Auto::Flake::Buffer
 
       case stripped
       when "buildInputs = ["
-        _pkgs.split(' ').each { |pkg_| new_buff << "           #{pkg_}" }
+        _pkgs.split(' ').each { |pkg_| new_buff << "            #{pkg_}" }
         next
       when "export PKG_CONFIG_PATH=${pkgs.lib.makeLibraryPath ["
-        _libs.split(' ').each { |lib_| new_buff << "           #{lib_}" }
+        _libs.split(' ').each { |lib_| new_buff << "            #{lib_}" }
         next
       when "export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath ["
-        _libs.split(' ').each { |lib_| new_buff << "           #{lib_}" }
+        _libs.split(' ').each { |lib_| new_buff << "            #{lib_}" }
         next
       end
     end
